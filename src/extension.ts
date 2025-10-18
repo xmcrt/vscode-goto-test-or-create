@@ -8,9 +8,9 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   const openTestFileBeside = vscode.commands.registerCommand(
-    "go-to-test-or-create.openTestFileBeside",
-    openFileCommand(vscode.ViewColumn.Beside)
-  );
+			"go-to-test-or-create.openTestFileBeside",
+			openFileCommand(vscode.ViewColumn.One),
+		);
 
   context.subscriptions.push(openTestFile);
   context.subscriptions.push(openTestFileBeside);

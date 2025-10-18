@@ -3,8 +3,8 @@
   "displayName": "go-to-test-or-create",
   "description": "Go to tests of current file or create them if they don't yet exist",
   "version": "0.6.0",
-  "publisher": "yrachid",
-  "repository": "https://github.com/yrachid/vscode-goto-test",
+  "publisher": "xmcrt",
+  "repository": "https://github.com/xmcrt/vscode-goto-test-or-create",
   "engines": {
     "vscode": "^1.62.0"
   },
