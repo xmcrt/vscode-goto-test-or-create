@@ -8,9 +8,9 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   const openTestFileBeside = vscode.commands.registerCommand(
-			"go-to-test-or-create.openTestFileBeside",
-			openFileCommand(vscode.ViewColumn.One),
-		);
+    "go-to-test-or-create.openTestFileBeside",
+    openFileCommand(vscode.ViewColumn.One),
+	);
 
   context.subscriptions.push(openTestFile);
   context.subscriptions.push(openTestFileBeside);
@@ -27,7 +27,7 @@ const openFileCommand = (placement: vscode.ViewColumn) => async () => {
   const name = fileName(activeEditor.document);
   let testPath = await testOf(activeEditor.document);
 
-  if (!testPath) {
+  if (!testPath && !activeEditor.document.fileName.endsWith('spec.ts')) {
     testPath = activeEditor.document.fileName.replace(/\.ts$/, ".spec.ts");
     const uri = vscode.Uri.file(testPath);
     const content = `describe('${ name }', () => {
