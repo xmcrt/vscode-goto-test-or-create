@@ -25,12 +25,6 @@ const openFileCommand = (placement: vscode.ViewColumn) => async () => {
   }
 
   const name = fileName(activeEditor.document);
-
-  const matchingFiles = await vscode.workspace.findFiles(`**/*${name}.spec.ts`);
-
-  console.log(">>>>>>>>>>", name);
-  console.log(">>>>>>>>>>", matchingFiles);
-
   let testPath = await testOf(activeEditor.document);
 
   if (!testPath) {
