@@ -2,7 +2,7 @@
   "name": "go-to-test-or-create",
   "displayName": "go-to-test-or-create",
   "description": "Go to tests of current file or create them if they don't yet exist",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "publisher": "xmcrt",
   "repository": "https://github.com/xmcrt/vscode-goto-test-or-create",
   "engines": {
