@@ -1,7 +1,7 @@
 {
-  "name": "go-to-test",
-  "displayName": "go-to-test",
-  "description": "Go to tests of current file",
+  "name": "go-to-test-or-create",
+  "displayName": "go-to-test-or-create",
+  "description": "Go to tests of current file or create them if they don't yet exist",
   "version": "0.6.0",
   "publisher": "yrachid",
   "repository": "https://github.com/yrachid/vscode-goto-test",
@@ -12,18 +12,18 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:go-to-test.openTestFile",
-    "onCommand:go-to-test.openTestFileBeside"
+    "onCommand:go-to-test-or-create.openTestFile",
+    "onCommand:go-to-test-or-create.openTestFileBeside"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "go-to-test.openTestFile",
+        "command": "go-to-test-or-create.openTestFile",
         "title": "Open test file"
       },
       {
-        "command": "go-to-test.openTestFileBeside",
+        "command": "go-to-test-or-create.openTestFileBeside",
         "title": "Open test file beside"
       }
     ]

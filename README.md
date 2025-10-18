@@ -1,6 +1,7 @@
-# vscode-goto-test
+# vscode-goto-test-or-create
 
 An extension to jump to the respective test suite of the current file.
+Adapted from the original repo to create default boilerplate for tests if none exists. Opinionated, probably not suitable for languages that aren't JS/TS.
 
 ### Open at the same group
 

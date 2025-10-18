@@ -3,12 +3,12 @@ import { testOf, fileName } from "./get-test-file";
 
 export function activate(context: vscode.ExtensionContext) {
   const openTestFile = vscode.commands.registerCommand(
-    "go-to-test.openTestFile",
+    "go-to-test-or-create.openTestFile",
     openFileCommand(vscode.ViewColumn.One)
   );
 
   const openTestFileBeside = vscode.commands.registerCommand(
-    "go-to-test.openTestFileBeside",
+    "go-to-test-or-create.openTestFileBeside",
     openFileCommand(vscode.ViewColumn.Beside)
   );
 
@@ -20,7 +20,7 @@ const openFileCommand = (placement: vscode.ViewColumn) => async () => {
   const activeEditor = vscode.window.activeTextEditor;
 
   if (!activeEditor) {
-    vscode.window.setStatusBarMessage("go-to-test: No files open", 3000);
+    vscode.window.setStatusBarMessage("go-to-test-or-create: No files open", 3000);
     return;
   }
 
@@ -31,11 +31,17 @@ const openFileCommand = (placement: vscode.ViewColumn) => async () => {
   console.log(">>>>>>>>>>", name);
   console.log(">>>>>>>>>>", matchingFiles);
 
-  const testPath = await testOf(activeEditor.document);
+  let testPath = await testOf(activeEditor.document);
 
   if (!testPath) {
-    vscode.window.setStatusBarMessage("go-to-test: No test file found", 3000);
-    return;
+    testPath = activeEditor.document.fileName.replace(/\.ts$/, ".spec.ts");
+    const uri = vscode.Uri.file(testPath);
+    const content = `describe('${ name }', () => {
+  it('', () => {
+ 
+  })
+})`
+    await vscode.workspace.fs.writeFile(uri, Buffer.from(content, 'utf8'));
   }
 
   const testDocument = await vscode.workspace.openTextDocument(
